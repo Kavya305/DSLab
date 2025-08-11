@@ -7,7 +7,7 @@ void createArray(int arr[], int &n) {
     cout << "Enter number of elements: ";
     cin >> n;
     if (n > MAX) {
-        cout << "Max size exceeded! Setting size to " << MAX << endl;
+        cout << "Max size exceeded! Max = " << MAX << endl;
         n = MAX;
     }
     cout << "Enter " << n << " elements: ";
@@ -30,7 +30,7 @@ void displayArray(int arr[], int n) {
 
 void insertElement(int arr[], int &n) {
     int pos, val;
-    cout << "Enter position (0-based index): ";
+    cout << "Enter position : ";
     cin >> pos;
     cout << "Enter value to insert: ";
     cin >> val;
@@ -52,7 +52,7 @@ void insertElement(int arr[], int &n) {
 
 void deleteElement(int arr[], int &n) {
     int pos;
-    cout << "Enter position (0-based index) to delete: ";
+    cout << "Enter position to delete: ";
     cin >> pos;
     if (pos < 0 || pos >= n) {
         cout << "Invalid position!\n";
@@ -82,7 +82,7 @@ int main() {
     int arr[MAX], n = 0, choice;
 
     while (true) {
-        cout << "\n------ MENU ------\n";
+        cout << "Choose operation : ";
         cout << "1. CREATE\n";
         cout << "2. DISPLAY\n";
         cout << "3. INSERT\n";
@@ -92,13 +92,27 @@ int main() {
         cout << "Enter your choice: ";
         cin >> choice;
 
-        if (choice == 1) createArray(arr, n);
-        else if (choice == 2) displayArray(arr, n);
-        else if (choice == 3) insertElement(arr, n);
-        else if (choice == 4) deleteElement(arr, n);
-        else if (choice == 5) linearSearch(arr, n);
-        else if (choice == 6) break;
-        else cout << "Invalid choice!\n";
+        if (choice == 1){
+             createArray(arr, n);
+        }
+        else if (choice == 2){
+            displayArray(arr, n);
+        }
+        else if (choice == 3){
+            insertElement(arr, n);
+        }
+        else if (choice == 4){
+            deleteElement(arr, n);
+        }
+        else if (choice == 5){
+            linearSearch(arr, n);
+        }
+        else if (choice == 6){
+            break;
+        }
+        else{
+            cout << "Invalid choice!\n";
+        }
     }
 
     return 0;
