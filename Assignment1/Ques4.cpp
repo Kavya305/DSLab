@@ -3,7 +3,7 @@ using namespace std;
 
 #define MAX 100
 
-// Function to reverse array
+//4(a)
 void reverseArray() {
     int arr[MAX], n;
     cout << "Enter number of elements: ";
@@ -19,13 +19,14 @@ void reverseArray() {
         arr[n - i - 1] = temp;
     }
 
+    
     cout << "Reversed array: ";
     for (int i = 0; i < n; i++)
         cout << arr[i] << " ";
     cout << endl;
 }
 
-// Function for matrix multiplication
+//4(b)
 void matrixMultiplication() {
     int A[10][10], B[10][10], C[10][10];
     int r1, c1, r2, c2;
@@ -67,7 +68,7 @@ void matrixMultiplication() {
     }
 }
 
-// Function for matrix transpose
+//4(c)
 void matrixTranspose() {
     int mat[10][10], trans[10][10];
     int rows, cols;
@@ -96,7 +97,7 @@ int main() {
     int choice;
 
     while (true) {
-        cout << "\n------ MENU ------\n";
+        cout << "Choose an operation : ";
         cout << "1. Reverse an Array\n";
         cout << "2. Matrix Multiplication\n";
         cout << "3. Matrix Transpose\n";
@@ -104,11 +105,21 @@ int main() {
         cout << "Enter your choice: ";
         cin >> choice;
 
-        if (choice == 1) reverseArray();
-        else if (choice == 2) matrixMultiplication();
-        else if (choice == 3) matrixTranspose();
-        else if (choice == 4) break;
-        else cout << "Invalid choice! Try again.\n";
+        if (choice == 1){
+            reverseArray();
+        }
+        else if (choice == 2){
+            matrixMultiplication()
+                };
+        else if (choice == 3){
+            matrixTranspose();
+        }
+        else if (choice == 4) {
+            break;
+        }
+        else{
+             cout << "Invalid choice! Try again.\n";
+        }
     }
 
     return 0;
