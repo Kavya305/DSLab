@@ -17,7 +17,7 @@ int main() {
         }
     }
 
-    // Sum of each row
+   
     for (int i = 0; i < rows; i++) {
         int rowSum = 0;
         for (int j = 0; j < cols; j++) {
@@ -26,7 +26,7 @@ int main() {
         cout << "Sum of row " << i + 1 << " = " << rowSum << endl;
     }
 
-    // Sum of each column
+    
     for (int j = 0; j < cols; j++) {
         int colSum = 0;
         for (int i = 0; i < rows; i++) {
