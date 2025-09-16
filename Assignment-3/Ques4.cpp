@@ -10,15 +10,38 @@ class Stack
     int top;
 
 public:
-    Stack() { top = -1; }
+    Stack() {
+        top = -1; 
+    }
+
     void push(char c)
     {
         if (top != MAX - 1)
-            arr[++top] = c;
+            top++;
+            arr[top] = c;
     }
-    char pop() { return (top != -1) ? arr[top--] : '\0'; }
-    char peek() { return (top != -1) ? arr[top] : '\0'; }
-    bool isEmpty() { return (top == -1); }
+
+    char pop() {
+        if(top == -1){
+            cout<<"Empty Stack!"<<endl;
+            return '\0'
+        } 
+        char c = arr[top];
+        top--;
+        return c;
+    }
+
+    char peek() {
+        if(top == -1){
+            cout<<"Empty Stack!"<<endl;
+            return '\0'
+        }
+        return arr[top];
+    }
+
+    bool isEmpty() {
+         return (top == -1); 
+    }
 };
 
 int precedence(char c)
@@ -49,7 +72,7 @@ string infixToPostfix(string s)
             {
                 result += st.pop();
             }
-            st.pop(); // remove '('
+            st.pop(); 
         }
         else
         {
@@ -75,3 +98,4 @@ int main()
     cout << "Postfix: " << infixToPostfix(infix) << endl;
     return 0;
 }
+
