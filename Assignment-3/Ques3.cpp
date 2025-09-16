@@ -10,15 +10,31 @@ class Stack
     int top;
 
 public:
-    Stack() { top = -1; }
-    void push(char c)
+    Stack() {
+        top = -1;
+    }
+
+    void push(int x)
     {
         if (top != MAX - 1)
-            arr[++top] = c;
+            top++;
+            arr[top] = x;
     }
-    char pop() { return (top != -1) ? arr[top--] : '\0'; }
-    char peek() { return (top != -1) ? arr[top] : '\0'; }
-    bool isEmpty() { return (top == -1); }
+
+    bool isEmpty() {
+        return top == -1;
+    }
+
+    int pop(){
+        int value;
+        if(isEmpty()){
+            cout<<"Stack Underflow!"<<endl;
+        } else {
+            value = arr[top];
+            top--;
+        }
+        return value;
+    }
 };
 
 bool isBalanced(string expr)
@@ -49,9 +65,10 @@ int main()
     cin >> expr;
 
     if (isBalanced(expr))
-        cout << "Balanced\n";
+        cout << "Balanced";
     else
-        cout << "Not Balanced\n";
+        cout << "Not Balanced";
 
     return 0;
 }
+
