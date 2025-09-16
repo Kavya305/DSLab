@@ -1,27 +1,44 @@
 #include <iostream>
 using namespace std;
 
-int findMissingNumber(int arr[], int n) {
-    int st = 0, end = n - 1;
-    int diff = arr[0]-0;  
-
-    while (st <= end) {
-        int mid = (st + end) / 2;
-
-        if ((arr[mid] - mid) == diff) {
-            st = mid + 1;
-        } else {
-            end = mid - 1;
+// (a) Linear Time Approach
+int findMissingLinear(int arr[], int n) {
+    for (int i = 0; i < n - 1; i++) {
+        if (arr[i] != i + 1) {
+            return i + 1; 
         }
     }
+    return n;  
+}
 
-    return st + diff; 
+// (b) Binary Search Approach
+int findMissingBinary(int arr[], int n) {
+    int low = 0, high = n - 2; 
+    while (low <= high) {
+        int mid = (low + high) / 2;
+        if (arr[mid] == mid + 1) {
+            low = mid + 1;
+        } else {
+            high = mid - 1;
+        }
+    }
+    return low + 1;  
 }
 
 int main() {
-    int arr[] = {1, 2, 3, 5};  // 4 is missing
-    int n = sizeof(arr) / sizeof(arr[0]);
+    int n;
+    cout << "Enter the value of n : ";
+    cin >> n;
 
-    cout << "Missing number is: " << findMissingNumber(arr, n) << endl;
+    int arr[n - 1];
+    cout << "Enter array elements : "<<endl;
+    for (int i = 0; i < n - 1; i++) {
+        cin >> arr[i];
+    }
+
+    
+    cout << "Missing number (Linear): " << findMissingLinear(arr, n) << endl;
+    cout << "Missing number (Binary Search): " << findMissingBinary(arr, n) << endl;
+
     return 0;
 }
