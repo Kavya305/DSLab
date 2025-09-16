@@ -10,14 +10,31 @@ class Stack
     int top;
 
 public:
-    Stack() { top = -1; }
+    Stack() {
+        top = -1;
+    }
+
     void push(int x)
     {
         if (top != MAX - 1)
             arr[++top] = x;
     }
-    int pop() { return (top != -1) ? arr[top--] : -1; }
-    bool isEmpty() { return (top == -1); }
+
+    bool isEmpty() {
+        return top == -1;
+    }
+
+    int pop(){
+        int value;
+        if(isEmpty()){
+            cout<<"Empty Stack!"<<endl;
+        } else {
+            value = arr[top];
+            top--;
+        }
+        return value;
+    }
+    
 };
 
 int evaluatePostfix(string exp)
@@ -62,3 +79,4 @@ int main()
     cout << "Result: " << evaluatePostfix(postfix) << endl;
     return 0;
 }
+
