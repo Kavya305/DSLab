@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-#define MAX 1000  
+#define MAX 100
 
 class Queue {
     char arr[MAX];
@@ -22,7 +22,9 @@ public:
     }
 
     void dequeue() {
-        if (isEmpty()) return;
+        if (isEmpty()) {
+            return;
+        }
         front++;
     }
 
@@ -34,42 +36,41 @@ public:
     bool isEmpty() {
         return front > rear;
     }
+
+    void reset() {
+        front = 0;
+        rear = -1;
+    }
 };
 
-
-void firstNonRepeating(char str[], int n) {
-    int freq[256] = {0};  
+void firstNonRepeating(string str) {
     Queue q;
-
-    for (int i = 0; i < n; i++) {
+    int freq[26] = {0}; 
+    for (int i = 0; i < str.length(); i++) {
         char ch = str[i];
-        if (ch == ' ') continue;  
 
-        freq[(int)ch]++;
+        freq[ch - 'a']++;
+
         q.enqueue(ch);
 
-        while (!q.isEmpty() && freq[(int)q.getFront()] > 1) {
+        while (!q.isEmpty() && freq[q.getFront() - 'a'] > 1) {
             q.dequeue();
         }
 
-        if (!q.isEmpty())
-            cout << q.getFront() << " ";
-        else
+        if (q.isEmpty())
             cout << -1 << " ";
+        else
+            cout << q.getFront() << " ";
     }
     cout << endl;
 }
 
 int main() {
-    char input[] = {'a', ' ', 'a', ' ', 'b', ' ', 'c'};
-    int n = sizeof(input) / sizeof(input[0]);
-
-    cout << "Input: ";
-    for (int i = 0; i < n; i++) cout << input[i];
-    cout << endl;
-
+    string input = "aabc";
+    cout << "Input: " << input << endl;
     cout << "Output: ";
-    firstNonRepeating(input, n);
-
+    firstNonRepeating(input);
     return 0;
 }
+
+
