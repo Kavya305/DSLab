@@ -43,7 +43,7 @@ class LinkedList{
             prev = curr;           
             curr = next;           
         }
-        head = prev; // New head
+        head = prev; 
     }
 
     void display() {
@@ -72,4 +72,5 @@ int main(){
     cout << "Reversed List: ";
     list.display();
     return 0;
+
 }
