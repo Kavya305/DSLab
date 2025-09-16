@@ -30,7 +30,9 @@ public:
     }
 
     int getFront() {
-        if (isEmpty()) return -1;
+        if (isEmpty()){
+            return -1;
+        }
         return arr[front];
     }
 
@@ -72,7 +74,7 @@ public:
 
     void pop() {
         if (q1.isEmpty()) {
-            cout << "Stack Underflow!" << endl;
+            cout << "Queue Underflow!" << endl;
             return;
         }
         q1.dequeue();
@@ -80,7 +82,7 @@ public:
 
     int top() {
         if (q1.isEmpty()) {
-            cout << "Stack is Empty!" << endl;
+            cout << "Queue is Empty!" << endl;
             return -1;
         }
         return q1.getFront();
@@ -98,8 +100,6 @@ class StackOneQueue {
 public:
     void push(int x) {
         q.enqueue(x);
-
-        // Rotate elements so that new element is at front
         int size = getSize();
         for (int i = 0; i < size - 1; i++) {
             int temp = q.getFront();
@@ -154,3 +154,4 @@ int main() {
 
     return 0;
 }
+
