@@ -25,9 +25,10 @@ int main() {
             distinct++;
         }
     }
-
-    cout << "Total number of distinct elements = " << distinctCount << endl;
+    
+    cout << "Total number of distinct elements = " << distinct << endl;
 
     return 0;
 }
+
 
