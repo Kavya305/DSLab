@@ -1,9 +1,9 @@
 #include <iostream>
 using namespace std;
 
-/* ========== (a) Diagonal Matrix ========== */
+
 void diagonalMatrix(int n) {
-    int *A = new int[n]; // dynamic allocation
+    int *A = new int[n]; 
 
     cout<<"\nEnter diagonal elements:\n";
     for(int i=0;i<n;i++) {
@@ -21,7 +21,7 @@ void diagonalMatrix(int n) {
     delete[] A;
 }
 
-/* ========== (b) Tri-diagonal Matrix ========== */
+
 void triDiagonalMatrix(int n) {
     int size = 3*n - 2;
     int *A = new int[size]; 
@@ -30,9 +30,9 @@ void triDiagonalMatrix(int n) {
     for(int i=0;i<n;i++) {
         for(int j=0;j<n;j++) {
             int x; cin>>x;
-            if(i-j==1) A[i-1] = x;          // lower diag
-            else if(i-j==0) A[n-1+i] = x;   // main diag
-            else if(i-j==-1) A[2*n-1+i] = x;// upper diag
+            if(i-j==1) A[i-1] = x;          
+            else if(i-j==0) A[n-1+i] = x;   
+            else if(i-j==-1) A[2*n-1+i] = x;
         }
     }
 
@@ -49,7 +49,7 @@ void triDiagonalMatrix(int n) {
     delete[] A;
 }
 
-/* ========== (c) Lower Triangular Matrix ========== */
+
 void lowerTriangularMatrix(int n) {
     int size = n*(n+1)/2;
     int *A = new int[size];
@@ -73,7 +73,7 @@ void lowerTriangularMatrix(int n) {
     delete[] A;
 }
 
-/* ========== (d) Upper Triangular Matrix ========== */
+
 void upperTriangularMatrix(int n) {
     int size = n*(n+1)/2;
     int *A = new int[size];
@@ -97,7 +97,7 @@ void upperTriangularMatrix(int n) {
     delete[] A;
 }
 
-/* ========== (e) Symmetric Matrix ========== */
+
 void symmetricMatrix(int n) {
     int size = n*(n+1)/2;
     int *A = new int[size];
@@ -121,7 +121,6 @@ void symmetricMatrix(int n) {
     delete[] A;
 }
 
-/* ========== MAIN ========== */
 int main() {
     int n;
     cout<<"Enter size of matrix (n): ";
@@ -135,3 +134,4 @@ int main() {
 
     return 0;
 }
+
