@@ -12,21 +12,17 @@ int main() {
         cin >> arr[i];
     }
 
-    int distinctCount = 0;
-
+    int distinct = 0;
     for (int i = 0; i < n; i++) {
         bool isDuplicate = false;
-
-        // Check if this element has appeared before
         for (int j = 0; j < i; j++) {
             if (arr[i] == arr[j]) {
                 isDuplicate = true;
                 break;
             }
         }
-
         if (!isDuplicate) {
-            distinctCount++;
+            distinct++;
         }
     }
 
@@ -34,3 +30,4 @@ int main() {
 
     return 0;
 }
+
