@@ -14,16 +14,20 @@ struct SparseMatrix {
 
 void readMatrix(SparseMatrix &s) {
     cout << "Enter rows, cols and number of non-zero elements: ";
-    cin >> s.rows >> s.cols >> s.nonZero;
+    cin >> s.rows;
+    cin>> s.cols;
+    cin>> s.nonZero;
 
-    cout << "Enter row, col and value of each element:\n";
+    cout << "Enter row, col and value of each element: "<<endl;
     for (int i = 0; i < s.nonZero; i++) {
-        cin >> s.data[i].row >> s.data[i].col >> s.data[i].val;
+        cin >> s.data[i].row;
+        cin >> s.data[i].col;
+        cin >> s.data[i].val;
     }
 }
 
 
-void printMatrix(const SparseMatrix &s) {
+void printMatrix(SparseMatrix &s) {
     cout << "Row\tCol\tVal\n";
     for (int i = 0; i < s.nonZero; i++) {
         cout << s.data[i].row << "\t" << s.data[i].col << "\t" << s.data[i].val << "\n";
@@ -31,7 +35,7 @@ void printMatrix(const SparseMatrix &s) {
 }
 
 // (a) Transpose
-SparseMatrix transpose(const SparseMatrix &s) {
+SparseMatrix transpose(SparseMatrix &s) {
     SparseMatrix t;
     t.rows = s.cols;
     t.cols = s.rows;
@@ -46,10 +50,10 @@ SparseMatrix transpose(const SparseMatrix &s) {
 }
 
 // (b) Addition
-SparseMatrix add(const SparseMatrix &a, const SparseMatrix &b) {
+SparseMatrix add(SparseMatrix &a, SparseMatrix &b) {
     SparseMatrix sum;
     if (a.rows != b.rows || a.cols != b.cols) {
-        cout << "Addition not possible!\n";
+        cout << "Addition not possible!"<<endl;
         sum.nonZero = 0;
         return sum;
     }
@@ -62,28 +66,41 @@ SparseMatrix add(const SparseMatrix &a, const SparseMatrix &b) {
     while (i < a.nonZero && j < b.nonZero) {
         if (a.data[i].row < b.data[j].row ||
            (a.data[i].row == b.data[j].row && a.data[i].col < b.data[j].col)) {
-            sum.data[sum.nonZero++] = a.data[i++];
+            sum.data[sum.nonZero] = a.data[i];
+            sum.nonZero++;
+            i++;
         } else if (b.data[j].row < a.data[i].row ||
                   (b.data[j].row == a.data[i].row && b.data[j].col < a.data[i].col)) {
-            sum.data[sum.nonZero++] = b.data[j++];
+            sum.data[sum.nonZero] = b.data[j];
+            sum.nonZero++;
+            j++;
         } else {
             Element temp = a.data[i];
             temp.val += b.data[j].val;
             if (temp.val != 0)
-                sum.data[sum.nonZero++] = temp;
+                sum.data[sum.nonZero] = temp;
+            sum.nonZero++
             i++;
             j++;
         }
     }
 
-    while (i < a.nonZero) sum.data[sum.nonZero++] = a.data[i++];
-    while (j < b.nonZero) sum.data[sum.nonZero++] = b.data[j++];
+    while (i < a.nonZero){
+        sum.data[sum.nonZero] = a.data[i];
+        sum.nonZero++;
+        i++;
+    }
+    while (j < b.nonZero){
+        sum.data[sum.nonZero] = b.data[j];
+        sum.nonZero++;
+        j++;
+    }
 
     return sum;
 }
 
 //Multiplication
-SparseMatrix multiply(const SparseMatrix &a, const SparseMatrix &b) {
+SparseMatrix multiply(SparseMatrix &a, SparseMatrix &b) {
     SparseMatrix product;
     if (a.cols != b.rows) {
         cout << "Multiplication not possible!\n";
@@ -142,3 +159,4 @@ int main() {
 
     return 0;
 }
+
