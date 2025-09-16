@@ -70,7 +70,7 @@ class LinkedList{
         while (head != nullptr && head->data == key) {
         Node* temp = head;
         head = head->next;
-        delete temp;  // free memory
+        delete temp;  
         }
 
         Node* current = head;
@@ -115,4 +115,5 @@ int main(){
     cout << "Linked List after deletion: ";
     list.display();
     return 0;
+
 }
